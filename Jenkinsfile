@@ -3,7 +3,7 @@ pipeline {
 	stages {
 		stage('Clone') {
 			steps {
-				echo 'Clone from github'
+				git credentialsId: 'github', url: 'https://github.com/tuananh7-dev/test-jenkin'
 			}
 		}
 		stage('Build') {
