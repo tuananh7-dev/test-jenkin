@@ -6,21 +6,12 @@ pipeline {
 				git credentialsId: 'github', url: 'https://github.com/tuananh7-dev/test-jenkin'
 			}
 		}
-		stage('Build') {
+		stage('Docker') {
 			steps {
-				echo 'Build code'
-			}
-		}
-		stage('Test') {
-			steps {
-				echo 'Test code'
-			}
-		}
-		stage('Build Docker') {
-			steps {
-				echo 'Build image'
-				echo 'Tag'
-				echo 'Push to docker hub'
+				withDockerRegistry(credentialsId: 'docker-hub', url: '') {
+					sh label: '', script: 'docker build -t tuananh7/my-website .'
+					sh label: '', script: 'docker push tuananh7/my-website'
+				}
 			}
 		}
 	}
