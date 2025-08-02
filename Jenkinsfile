@@ -9,10 +9,10 @@ pipeline {
 		stage('Docker') {
 			steps {
 				echo 'Build docker'
-				//withDockerRegistry(credentialsId: 'docker-hub', url: '') {
-				//	sh label: '', script: 'docker build -t tuananh7/my-website .'
-				//	sh label: '', script: 'docker push tuananh7/my-website'
-				//}
+				withDockerRegistry(credentialsId: 'docker-hub', url: '') {
+					sh label: '', script: 'docker build -t tuananh7/my-website .'
+					sh label: '', script: 'docker push tuananh7/my-website'
+				}
 			}
 		}
 	}
