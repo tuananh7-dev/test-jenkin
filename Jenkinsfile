@@ -8,10 +8,11 @@ pipeline {
 		}
 		stage('Docker') {
 			steps {
-				withDockerRegistry(credentialsId: 'docker-hub', url: '') {
-					sh label: '', script: 'docker build -t tuananh7/my-website .'
-					sh label: '', script: 'docker push tuananh7/my-website'
-				}
+				echo 'Build docker'
+				//withDockerRegistry(credentialsId: 'docker-hub', url: '') {
+				//	sh label: '', script: 'docker build -t tuananh7/my-website .'
+				//	sh label: '', script: 'docker push tuananh7/my-website'
+				//}
 			}
 		}
 	}
